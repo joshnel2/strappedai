@@ -2,7 +2,16 @@
 function scrollToContact() {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Offset for mobile nav
+        const isMobile = window.innerWidth <= 768;
+        const offset = isMobile ? -70 : -80;
+        const elementPosition = contactSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset + offset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
     }
 }
 
@@ -158,3 +167,44 @@ window.addEventListener('load', function() {
         }
     }
 });
+
+// Mobile-specific enhancements
+if ('ontouchstart' in window) {
+    // Prevent double-tap zoom on buttons
+    document.addEventListener('touchstart', function(e) {
+        if (e.target.classList.contains('cta-button') || 
+            e.target.closest('.cta-button')) {
+            e.preventDefault();
+            e.target.click();
+        }
+    }, { passive: false });
+
+    // Add haptic-like feedback for form submission on mobile
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', function() {
+            if (navigator.vibrate) {
+                navigator.vibrate(50); // Subtle vibration on submit
+            }
+        });
+    }
+}
+
+// Improve mobile viewport height (fix for iOS Safari bottom bar)
+function setMobileViewportHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Set on load and resize
+setMobileViewportHeight();
+window.addEventListener('resize', setMobileViewportHeight);
+
+// Optimize scroll performance on mobile
+let scrollTimer;
+window.addEventListener('scroll', function() {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(function() {
+        // Scroll has stopped, ensure animations are complete
+    }, 150);
+}, { passive: true });
