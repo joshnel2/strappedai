@@ -343,6 +343,91 @@ section {
 }
 
 
+/* System Diagram Section */
+.system-diagram {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 120px 0;
+}
+
+.diagram-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.flow-diagram {
+    width: 100%;
+    height: auto;
+    margin-bottom: 48px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.flow-diagram text {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Animate agent nodes */
+.agent-node {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.agent-node:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.agent-node:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+/* Diagram Features */
+.diagram-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+}
+
+.diagram-feature {
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.diagram-feature:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+}
+
+.feature-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    filter: grayscale(0.3);
+}
+
+.feature-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
 /* CTA Section */
 .cta-section {
     background: var(--gradient-2);
@@ -794,6 +879,34 @@ select.form-input {
     }
 
 
+    /* System Diagram */
+    .system-diagram {
+        padding: 60px 0;
+    }
+
+    .flow-diagram {
+        padding: 20px;
+        margin-bottom: 32px;
+    }
+
+    .diagram-features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .diagram-feature {
+        padding: 20px 16px;
+    }
+
+    .feature-icon {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    .feature-label {
+        font-size: 13px;
+    }
+
     /* CTA Section */
     .cta-title {
         font-size: 28px;
@@ -1018,6 +1131,32 @@ select.form-input {
         font-size: 17px;
     }
 
+
+    /* System Diagram - Mobile */
+    .system-diagram {
+        padding: 50px 0;
+    }
+
+    .flow-diagram {
+        padding: 16px;
+    }
+
+    .diagram-features {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .diagram-feature {
+        padding: 16px;
+    }
+
+    .feature-icon {
+        font-size: 24px;
+    }
+
+    .feature-label {
+        font-size: 12px;
+    }
 
     /* CTA Section */
     .cta-title {
