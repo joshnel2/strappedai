@@ -364,6 +364,7 @@ section {
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 32px;
+    min-height: 400px;
 }
 
 .flow-diagram text {
@@ -885,8 +886,15 @@ select.form-input {
     }
 
     .flow-diagram {
-        padding: 20px;
+        padding: 24px 16px;
         margin-bottom: 32px;
+        min-height: 450px;
+        border-radius: 12px;
+    }
+
+    /* Scale up SVG text for tablet */
+    .flow-diagram text {
+        font-size: 110%;
     }
 
     .diagram-features {
@@ -1137,8 +1145,30 @@ select.form-input {
         padding: 50px 0;
     }
 
+    .diagram-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+    }
+
     .flow-diagram {
-        padding: 16px;
+        padding: 16px 8px;
+        min-height: 380px;
+        border-radius: 8px;
+        min-width: 100%;
+    }
+
+    /* Scale up all SVG elements significantly for mobile */
+    .flow-diagram text {
+        font-size: 145%;
+        font-weight: 600;
+    }
+
+    /* Make stroke widths more visible on mobile */
+    .flow-diagram rect,
+    .flow-diagram circle,
+    .flow-diagram line {
+        stroke-width: 2.5;
     }
 
     .diagram-features {
