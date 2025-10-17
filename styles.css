@@ -354,10 +354,14 @@ section {
 .diagram-container {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .flow-diagram {
     width: 100%;
+    max-width: 1200px;
     height: auto;
     margin-bottom: 48px;
     background: var(--bg-elevated);
@@ -365,10 +369,20 @@ section {
     border-radius: 16px;
     padding: 32px;
     min-height: 400px;
+    display: block;
 }
 
 .flow-diagram text {
     font-family: 'Inter', sans-serif;
+}
+
+/* Show desktop diagram by default */
+.diagram-mobile {
+    display: none;
+}
+
+.diagram-desktop {
+    display: block;
 }
 
 /* Animate agent nodes */
@@ -885,6 +899,15 @@ select.form-input {
         padding: 60px 0;
     }
 
+    /* Keep desktop diagram on tablet */
+    .diagram-desktop {
+        display: block;
+    }
+
+    .diagram-mobile {
+        display: none;
+    }
+
     .flow-diagram {
         padding: 24px 16px;
         margin-bottom: 32px;
@@ -1145,30 +1168,26 @@ select.form-input {
         padding: 50px 0;
     }
 
+    /* Switch to mobile vertical diagram */
+    .diagram-desktop {
+        display: none;
+    }
+
+    .diagram-mobile {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
     .diagram-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 8px;
+        padding: 0 16px;
     }
 
     .flow-diagram {
-        padding: 16px 8px;
-        min-height: 380px;
-        border-radius: 8px;
-        min-width: 100%;
-    }
-
-    /* Scale up all SVG elements significantly for mobile */
-    .flow-diagram text {
-        font-size: 145%;
-        font-weight: 600;
-    }
-
-    /* Make stroke widths more visible on mobile */
-    .flow-diagram rect,
-    .flow-diagram circle,
-    .flow-diagram line {
-        stroke-width: 2.5;
+        padding: 24px 16px;
+        min-height: 700px;
+        border-radius: 12px;
     }
 
     .diagram-features {
